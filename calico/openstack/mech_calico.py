@@ -215,7 +215,7 @@ class CalicoMechanismDriver(mech_agent.SimpleAgentMechanismDriverBase):
 
     def check_segment_for_agent(self, segment, agent):
         LOG.debug("Checking segment %s with agent %s" % (segment, agent))
-        if segment[api.NETWORK_TYPE] in ['local', 'flat']:
+        if segment[api.NETWORK_TYPE] in ['routed', 'local', 'flat']:
             return True
         else:
             LOG.warning(
@@ -226,7 +226,7 @@ class CalicoMechanismDriver(mech_agent.SimpleAgentMechanismDriverBase):
             return False
 
     def get_allowed_network_types(self, agent=None):
-        return ('local', 'flat')
+        return ('routed', 'local', 'flat')
 
     def get_mappings(self, agent):
         # We override this primarily to satisfy the ABC checker: this method
