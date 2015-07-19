@@ -1,0 +1,21 @@
+#                                                                      -*-sh-*-
+# Devstack settings that are wanted when using Calico
+# ===================================================
+
+disable_service dstat
+disable_service tempest
+disable_service n-net
+enable_service q-svc
+enable_service q-dhcp
+enable_service n-api-meta
+enable_service calico
+
+NEUTRON_REPO=https://github.com/Metaswitch/calico-neutron.git
+NEUTRON_BRANCH=dhcp-for-routed-ifs
+Q_AGENT=calico
+Q_ML2_PLUGIN_TYPE_DRIVERS=routed
+Q_ML2_PLUGIN_MECHANISM_DRIVERS=calico
+Q_ML2_TENANT_NETWORK_TYPE=routed
+ENABLE_TENANT_TUNNELS=False
+ENABLE_TENANT_VLANS=False
+NEUTRON_CREATE_INITIAL_NETWORKS=False
